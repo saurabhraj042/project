@@ -10,6 +10,9 @@ const expressLayouts = require("express-ejs-layouts");
 const indexRouter = require('./routes/index')
 const UserRouter = require('./routes/user')
 
+const host = '0.0.0.0';
+const port = process.env.PORT || 3000;
+
 
 
 app.set('view engine','ejs')
@@ -31,4 +34,8 @@ mongoose.connect(process.env.DATABASE,{useUnifiedTopology: true,useNewUrlParser 
 //db.on('error',error => console.error(error))
 //db.once('open',() => console.log("Connected to Mongoose"))
 
-app.listen(process.env.PORT || 3000)
+//app.listen(process.env.PORT || 5000)
+
+app.listen(port, host, function() {
+    console.log("Server started.......");
+  });
