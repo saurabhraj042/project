@@ -9,19 +9,24 @@ const app = express();
 const expressLayouts = require("express-ejs-layouts");
 const indexRouter = require('./routes/index')
 const UserRouter = require('./routes/user')
+const authRouter = require('./routes/authors')
 
 const host = '0.0.0.0';
 const port = process.env.PORT || 3000;
 
 
-
+//MVC setup
 app.set('view engine','ejs')
 app.set('views',__dirname + "/views")
 app.set('layout','layouts/layout')
 app.use(expressLayouts)
 app.use(express.static('public'))
+
+
+//Routes setup
 app.use('/',indexRouter)
 app.use('/user',UserRouter)
+app.use('/authors',authRouter)
 
 //setting up database
 
